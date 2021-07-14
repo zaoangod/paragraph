@@ -66,6 +66,12 @@ class Paragraph {
     this._preserveBlank = config.preserveBlank !== undefined ? config.preserveBlank : false;
 
     this.data = data;
+
+    /**
+     * block read only
+     * @type {boolean}
+     */
+    this._element.contentEditable = !this._data.readOnly;
   }
 
   /**
@@ -223,9 +229,8 @@ class Paragraph {
    */
   set data(data) {
     this._data = data || {};
+
     this._element.innerHTML = this._data.text || '';
-    // block read only
-    this._element.contentEditable = !this._data.readOnly;
   }
 
   /**
