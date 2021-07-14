@@ -223,8 +223,9 @@ class Paragraph {
    */
   set data(data) {
     this._data = data || {};
-
     this._element.innerHTML = this._data.text || '';
+    // block read only
+    this._element.contentEditable = !this._data.readOnly;
   }
 
   /**
